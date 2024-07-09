@@ -1,0 +1,183 @@
+{
+	"name": "CopyPipeline_1",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_xd8",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "con1/Practice_1/movies.csv"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.movies"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"maxConcurrentConnections": 2,
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings",
+							"skipLineCount": 0
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"tableOption": "autoCreate"
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "MOVIES",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "MOVIES",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "YEAR",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "YEAR",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "GENRE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "GENRE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "RATING",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "RATING",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "ONE-LINE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ONE-LINE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "STARS",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "STARS",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "VOTES",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "VOTES",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "RunTime",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "RunTime",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Gross",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Gross",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_xd8",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_xd8",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2024-06-25T16:54:39Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

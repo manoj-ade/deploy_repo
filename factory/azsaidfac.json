@@ -1,0 +1,9 @@
+{
+	"name": "azsaidfac",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "f1f3655c-3d39-43af-9d14-bc05eb172cfa",
+		"tenantId": "03f8381e-ce1a-4ab4-9147-8e598fc27943"
+	}
+}
