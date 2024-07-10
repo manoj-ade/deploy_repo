@@ -1,7 +1,9 @@
 # Workflow name
 name: Create Resource Group
+
+# Define the trigger (replace with your desired event)
 on:
-  push:
+  push:  # Correct indentation (one level below `on`)
     branches: [ main ]
 # Jobs and steps
 jobs:
