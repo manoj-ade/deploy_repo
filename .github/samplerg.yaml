@@ -1,0 +1,25 @@
+# Workflow name
+name: Create Resource Group
+
+# Jobs and steps
+jobs:
+  create-rg:
+    runs-on: self-hosted  # You can change this to your desired runner
+
+    steps:
+    - uses: actions/checkout@v3  # Checkout code from your repository
+
+    # Login to Azure (replace with your service principal details)
+    - name: Login to Azure
+      run: |
+        az login --service-principal --username ${{ secrets.AZURE_SERVICE_PRINCIPAL_NAME }} --password ${{ secrets.AZURE_SERVICE_PRINCIPAL_PASSWORD }} --tenant ${{ secrets.AZURE_TENANT_ID }}
+
+    # Set variables (replace with your desired resource group name and location)
+    - name: newrg
+      run: echo "RESOURCE_GROUP_NAME=your_resource_group_name" >> $GITHUB_ENV
+    - name: eastus2
+      run: echo "LOCATION=your_location" >> $GITHUB_ENV
+
+    # Create Resource Group
+    - name: Create Resource Group
+      run: az group create --name ${{ env.RESOURCE_GROUP_NAME }} --location ${{ env.LOCATION }}
