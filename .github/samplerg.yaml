@@ -1,6 +1,8 @@
 # Workflow name
 name: Create Resource Group
-
+on:
+  push:
+    branches: [ main ]
 # Jobs and steps
 jobs:
   create-rg:
